@@ -1,13 +1,26 @@
 import streamlit as st
 import pdfplumber
 import re
-
-openaikey = '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'
+import os
+import requests
+openaikey = 'keys'
 chatgpt_url = "https://api.openai.com/v1/chat/completions"
 chatgpt_headers = {
     "content-type": "application/json",
     "Authorization":"Bearer {}".format(openaikey)}
-
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("url_goes_here")
+    }
+   .sidebar .sidebar-content {
+        background: url("url_goes_here")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 import json
 def generate_revised_content(content):
@@ -27,8 +40,19 @@ def extract_text_from_pdf(pdf_path):
             text += page.extract_text()
     
     return text
-import requests
 
+
+def json_to_dataframe(json_data):
+    data = []
+    for item in json_data:
+        values = []
+        for subitem in item.values():
+            if isinstance(subitem, list):
+                values.extend([nested_subitem['value'] for nested_subitem in subitem])
+        data.append(values)
+    
+    df = pd.DataFrame(data).transpose()
+    return df
 
 def main():
     st.title("PDF to JSON Converter")
@@ -36,12 +60,11 @@ def main():
     if uploaded_file is not None:
         with st.spinner("Extracting text from PDF..."):
             text = extract_text_from_pdf(uploaded_file)
-        st.write("Extracted Text:")
-        st.write(text)
+        st.write("Text is Extracted successfully!")
+        #st.write(text)
         prompt_prefix = f"""{text}
         --------------------------
-        Generate basic Blood Report from Given Text. Generate a question and a corresponding answer
-        Strictly output in JSON format. The JSON should have the following format:"""
+        Generate basic Blood Report from Given Text. Generate the value to be key value pair. The JSON should have the following format:"""
 
         sample_json = [
             {"HEMOGLOBIN":[{"value": '...' },{ "range":'...' }, {"unit": 'g/dL'}]},
@@ -71,8 +94,35 @@ def main():
             print (response)
             print (response['choices'][0]['message']['content'])
             #st.write(response['choices'][0]['message']['content'])
-        st.json(response['choices'][0]['message']['content'])
         
+        st.json(response['choices'][0]['message']['content'])
+        output_directory = "config"
+        #os.makedirs(output_directory, exist_ok=True)
+        output_file_path = os.path.join(output_directory, "output.json")
+
+        with open(output_file_path, "w") as output_file:
+            json.dump(response['choices'][0]['message']['content'], output_file, indent=2)
+
+        st.write(response['choices'][0]['message']['content'])
+        st.success(f"JSON output saved to {output_file_path}")
+        # df = json_to_dataframe(response['choices'][0]['message']['content'])
+        # st.table(df)
+        # for section in response['choices'][0]['message']['content']:
+        #     for key, values in section.items():
+        #         st.subheader(key)
+
+        #         # Check if the section has a "value" field and create a bar chart
+        #         if any("value" in value for value in values):
+        #             values_dict = {item["value"]: item["unit"] for item in values if "value" in item}
+        #             st.bar_chart(values_dict)
+
+        #         # Check if the section has a "range" field and create a line chart
+        #         if any("range" in value for value in values):
+        #             values_dict = {item["range"][0]: item["unit"] for item in values if "range" in item}
+        #             st.line_chart(values_dict)
+
+        #         st.write("---")
+
 
 if __name__ == "__main__":
     main()
