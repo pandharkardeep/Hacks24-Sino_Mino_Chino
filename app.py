@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 load_dotenv() ## loading all the environment variables
-GOOGLE_API_KEY = "AIzaSyC2VQSJqd4WQmSuP6RtMmNBj98ZbwRf4gU"
+GOOGLE_API_KEY = "key"
 import streamlit as st
 import os
 import google.generativeai as genai
