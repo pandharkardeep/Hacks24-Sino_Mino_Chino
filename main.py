@@ -3,25 +3,26 @@ import pdfplumber
 import re
 import os
 import requests
-openaikey = 'keys'
+openaikey = ''
 chatgpt_url = "https://api.openai.com/v1/chat/completions"
 chatgpt_headers = {
     "content-type": "application/json",
     "Authorization":"Bearer {}".format(openaikey)}
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background: url("url_goes_here")
-    }
-   .sidebar .sidebar-content {
-        background: url("url_goes_here")
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
+# st.markdown(
+#     """
+#     <style>
+#     .reportview-container {
+#         background: url("url_goes_here")
+#     }
+#    .sidebar .sidebar-content {
+#         background: url("url_goes_here")
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
+with open('pdf.css') as f:
+    st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
 import json
 def generate_revised_content(content):
     content = re.sub(r'[^\x00-\x7F]+', ' ', content)
