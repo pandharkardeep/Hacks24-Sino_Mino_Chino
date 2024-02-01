@@ -8,19 +8,7 @@ chatgpt_url = "https://api.openai.com/v1/chat/completions"
 chatgpt_headers = {
     "content-type": "application/json",
     "Authorization":"Bearer {}".format(openaikey)}
-# st.markdown(
-#     """
-#     <style>
-#     .reportview-container {
-#         background: url("url_goes_here")
-#     }
-#    .sidebar .sidebar-content {
-#         background: url("url_goes_here")
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
+
 with open('pdf.css') as f:
     st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
 import json
@@ -106,23 +94,7 @@ def main():
 
         st.write(response['choices'][0]['message']['content'])
         st.success(f"JSON output saved to {output_file_path}")
-        # df = json_to_dataframe(response['choices'][0]['message']['content'])
-        # st.table(df)
-        # for section in response['choices'][0]['message']['content']:
-        #     for key, values in section.items():
-        #         st.subheader(key)
-
-        #         # Check if the section has a "value" field and create a bar chart
-        #         if any("value" in value for value in values):
-        #             values_dict = {item["value"]: item["unit"] for item in values if "value" in item}
-        #             st.bar_chart(values_dict)
-
-        #         # Check if the section has a "range" field and create a line chart
-        #         if any("range" in value for value in values):
-        #             values_dict = {item["range"][0]: item["unit"] for item in values if "range" in item}
-        #             st.line_chart(values_dict)
-
-        #         st.write("---")
+        
 
 
 if __name__ == "__main__":
