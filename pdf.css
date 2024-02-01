@@ -1,14 +1,13 @@
 .st-emotion-cache-13k62yr{
     /* background: url('my-background.png'); */
-    /* background-image: url("https://www.meitra.com/public/upload_file/62d00031ece641657798705.jpg"); */
+    background-image: url("https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=996&t=st=1706761396~exp=1706761996~hmac=aa8f1a436e35baf4ef77584b71c21054fb9367c6d3a4aae8d231a17ae7e886f1");
     background-size: cover;
     /* background:linear-gradient(45deg,#2a37bd,#00d5ff,#ffffff); */
-    background-clip: url('https://media.istockphoto.com/id/1714953226/video/tablet-smile-and-doctor-search-social-media-joke-or-funny-online-internet-or-web-meme-in-a.mp4?s=mp4-640x640-is&k=20&c=2Dq0f7ze3cDO1m2DvfL3L0wbssm6OrlGhFnXkYJgMUU=');
 
 }
 .st-emotion-cache-k7vsyb span {
     scroll-margin-top: 2rem;
-    color: #1d1d9d;
+    color: #2c7c74;
 }
 .st-emotion-cache-q8sbsg p {
     word-break: break-word;
@@ -27,4 +26,19 @@
     color: black;
     font-weight: bolder;
     font-size: 17px;
+}
+
+.st-emotion-cache-19rxjzo{
+    background-color: rgb(20 84 36);
+    color: white;
+}
+
+.st-emotion-cache-1erivf3 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(129 173 124 / 81%);
+    border-radius: 0.5rem;
+    color: rgb(0, 0, 0);
 }
