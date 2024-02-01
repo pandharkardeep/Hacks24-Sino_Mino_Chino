@@ -1,11 +1,13 @@
 from dotenv import load_dotenv
 load_dotenv() ## loading all the environment variables
-GOOGLE_API_KEY = "key"
+GOOGLE_API_KEY = ""
 import streamlit as st
 import os
 import google.generativeai as genai
 import json
-
+st.set_page_config(page_title="Q&A Demo")
+with open('llm.css') as f:
+    st.markdown(f'<style>{f.read()}</style>',unsafe_allow_html=True)
 genai.configure(api_key=GOOGLE_API_KEY)
 
 ## function to load Gemini Pro model and get repsonses
@@ -18,9 +20,9 @@ def get_gemini_response(question):
 
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Q&A Demo")
 
-st.header("Gemini LLM Application")
+
+st.header("AI Report Parser")
 
 # Initialize session state for chat history if it doesn't exist
 if 'chat_history' not in st.session_state:
@@ -32,7 +34,7 @@ submit=st.button("Ask the question")
 if submit and input:
     output_data = {}
     try:
-        with open('D:/tsechacks/config/output.json', 'r') as json_file:
+        with open('D:/OSC/config/output.json', 'r') as json_file:
             output_data = json.load(json_file)
     except FileNotFoundError:
         # If the file doesn't exist yet, initialize with an empty dictionary
