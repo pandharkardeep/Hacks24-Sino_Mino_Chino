@@ -23,7 +23,8 @@ def get_gemini_response(question):
 
 
 st.header("AI Report Parser")
-
+localhost_link = "http://localhost:8501"
+st.markdown(f"[Click here to upload pdf File]({localhost_link})")
 # Initialize session state for chat history if it doesn't exist
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
