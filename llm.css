@@ -1,11 +1,11 @@
 .st-emotion-cache-13k62yr{
     /* background: url('my-background.png'); */
-    background-image: url("https://www.meitra.com/public/upload_file/62d00031ece641657798705.jpg");
+    background-image: url("https://i.pinimg.com/736x/1a/ee/5c/1aee5c344846f449350feae457ea350e.jpg");
     background-size: cover;
 }
 .st-emotion-cache-k7vsyb span {
     scroll-margin-top: 2rem;
-    color: #1d1d9d;
+    color: #2c7c74;
 }
 .st-emotion-cache-q8sbsg p {
     word-break: break-word;
@@ -16,4 +16,14 @@
 }
 .st-emotion-cache-k7vsyb span{
     color: black;
+}
+
+.st-emotion-cache-19rxjzo{
+    background-color: rgb(20 84 36);
+    color: white;
+}
+
+.st-emotion-cache-13k62yr {
+    color: rgb(0, 0, 0);
+
 }
