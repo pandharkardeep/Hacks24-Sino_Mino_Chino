@@ -27,4 +27,8 @@ Open a new terminal and then use this command:
 ```bash
 streamlit run app.py
 ```
+### Images
+![image](https://github.com/pandharkardeep/Hacks24-Sino_Mino_Chino/assets/123973969/9d0f5821-59be-475d-a437-5f2813c713d6)
+
+![image](https://github.com/pandharkardeep/Hacks24-Sino_Mino_Chino/assets/123973969/885097fe-3532-4953-8420-2f1e3ecdc678)
 
